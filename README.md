@@ -57,6 +57,12 @@ workbook = spreadsheet.new();
 spreadsheet.addRows( workbook, data );
 </cfscript>
 ```
+
+_If you use CommandBox to install this as a module but you don't use ColdBox as a framework_: Because the repo/module name contains a hypen and the automatically generate directory will contain it too, you will not be able to use the *New* command due to the dot notation not accepting hyphenated names.  The workaround is simply to use the traditional *CreateObject* function.  Please note that CreateObject doesn't call the init() function by default so you'll have to add that on as well for this module to work properly.
+```
+spreadsheet = CreateObject("component","/modules/lucee-spreadsheet/Spreadsheet").init();
+```
+
 You will probably want to place the spreadsheet library files in a central location with an application mapping, and instantiate the component using its dot path (e.g. `New myLibrary.spreadsheet.Spreadsheet();`).
 
 [How to create mappings (StackOverflow)](http://stackoverflow.com/questions/12073714/components-mapping-in-railo).
